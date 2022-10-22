@@ -9,16 +9,15 @@ export default function Checkbox({ children, ...props }) {
 	const [field, meta] = useField({ ...props, type: 'checkbox' });
 
 	return (
-		<div>
-			<label className='checkbox-input'>
+		<>
+			<label>
 				<input type='checkbox' {...field} {...props} />
-
-				{children}
+				<span>{children}</span>
 			</label>
 
 			{meta.touched && meta.error ? (
 				<div className='error'>{meta.error}</div>
 			) : null}
-		</div>
+		</>
 	);
 }

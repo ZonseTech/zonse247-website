@@ -1,73 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Login.css';
-// import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-
-import TextInput from '../../components/Form/TextInput';
-
-async function loginUser(credentials) {
-	await axios.postForm('https://httpbin.org/post', credentials);
-}
+import { Checkbox, TextInput } from '../../components/Form';
 
 export default function Login() {
-	const [inputField, setInputField] = useState({
-		username: '',
-		password: '',
-		rememberMe: '',
-	});
+	const handleSubmit = (values, { setSubmitting }) => {
+		setTimeout(() => {
+			alert(JSON.stringify(values, null, 2));
 
-	const inputsHandler = (e) => {
-		const { name, value } = e.target;
-
-		setInputField((prevState) => ({
-			...prevState,
-			[name]: value,
-		}));
-	};
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-
-		const token = await loginUser(inputField);
-
-		return token;
+			setSubmitting(false);
+		}, 400);
 	};
 
 	return (
 		<Formik
 			initialValues={{
-				firstName: '',
-				lastName: '',
-				email: '',
-				acceptedTerms: false, // added for our checkbox
-				jobType: '', // added for our select
+				username: '',
+				password: '',
+				rememberMe: false,
 			}}
 			validationSchema={Yup.object({
-				firstName: Yup.string()
+				username: Yup.string()
 					.max(15, 'Must be 15 characters or less')
-					.required('Required'),
+					.required('Please enter your username'),
 
-				lastName: Yup.string()
-					.max(20, 'Must be 20 characters or less')
-					.required('Required'),
-
-				email: Yup.string().email('Invalid email address').required('Required'),
-
-				acceptedTerms: Yup.boolean()
-					.required('Required')
-					.oneOf([true], 'You must accept the terms and conditions.'),
+				password: Yup.string().required('Password is required'),
 			})}
-			onSubmit={(values, { setSubmitting }) => {
-				setTimeout(() => {
-					alert(JSON.stringify(values, null, 2));
-
-					setSubmitting(false);
-				}, 400);
-			}}>
+			onSubmit={handleSubmit}>
 			<div
 				className='vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark preload-transitions 1-column login-bg blank-page blank-page'
 				data-open='click'
@@ -89,16 +51,12 @@ export default function Login() {
 												<i className='material-icons prefix pt-2'>
 													person_outline
 												</i>
-												<input
+												<TextInput
+													label={'Username'}
 													id='username'
 													type='text'
 													name='username'
-													onChange={inputsHandler}
-													value={inputField.username}
 												/>
-												<label htmlFor='username' className='center-align'>
-													Username
-												</label>
 											</div>
 										</div>
 										<div className='row margin'>
@@ -106,21 +64,12 @@ export default function Login() {
 												<i className='material-icons prefix pt-2'>
 													lock_outline
 												</i>
-												{/* <input
-												id='password'
-												type='password'
-												name='password'
-												onChange={inputsHandler}
-												value={inputField.password}
-											/> */}
 												<TextInput
+													label={'Password'}
 													id='password'
 													type='password'
 													name='password'
-													onChange={inputsHandler}
-													value={inputField.password}
 												/>
-												<label htmlFor='password'>Password</label>
 											</div>
 											<div className='input-field col s12 m-0'>
 												<p className='margin right-align medium-small'>
@@ -130,12 +79,7 @@ export default function Login() {
 										</div>
 										<div className='row'>
 											<div className='col s12 m12 l12 ml-2 mt-1'>
-												<p>
-													<label>
-														<input type='checkbox' name='rememberMe' />
-														<span>Remember Me</span>
-													</label>
-												</p>
+												<Checkbox name={'rememberMe'}>Remember Me</Checkbox>
 											</div>
 										</div>
 										<div className='row'>

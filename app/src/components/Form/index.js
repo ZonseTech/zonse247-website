@@ -3,7 +3,7 @@ import Select from "./Select";
 import Checkbox from "./Checkbox";
 
 // eslint-disable-next-line
-export default {
+export {
 	Checkbox,
 	TextInput,
 	Select
