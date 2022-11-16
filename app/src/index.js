@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom";
+
 import routes from './routes';
 
 import "./assets/css/App.css"
 import "./assets/css/Materialize.css"
 import "./assets/css/Vendors.css"
+
+console.log(process.env);
 
 ReactDOM
   .createRoot(document.getElementById('root'))
