@@ -1,3 +1,5 @@
+import AuthService from "./auth.service";
+
 /**
  * @description checks Local Storage for user item.
  * 				If there is a logged in user with accessToken (JWT),
@@ -7,10 +9,10 @@
  * @returns {}
  */
 export default function authHeader() {
-	const user = JSON.parse(localStorage.getItem('user'));
+	const token = AuthService.getToken();
 
-	if (user && user.accessToken)
-		return { Authorization: `Bearer ${user.accessToken}` }
+	if (token)
+		return { Authorization: `Bearer ${token}` }
 
 	return {};
 }

@@ -5,20 +5,22 @@ import * as Yup from 'yup';
 
 import './Login.css';
 import { Checkbox, TextInput } from '../../components/Form';
-import AuthService from '../../services/auth.service';
+import { useAuth } from '../../store/AuthContext';
 
 export default function Login() {
+	const auth = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
-
 	const [message, setMessage] = useState('');
 
 	const handleLogin = (data, { setSubmitting }) => {
 		setTimeout(async () => {
-			AuthService.login(data.email, data.password).then(
-				() => {
-					const origin = location.state?.from?.pathname || '/dashboard';
-					navigate(origin);
+			auth.signin(data.email, data.password).then(
+				(result) => {
+					if (result.status) {
+						const origin = location.state?.from?.pathname || '/dashboard';
+						navigate(origin);
+					}
 				},
 				(error) => {
 					const resMessage =
@@ -63,6 +65,14 @@ export default function Login() {
 							<div id='login-page' className='row'>
 								<div className='col s12 m6 l4 z-depth-4 card-panel border-radius-1 login-card bg-opacity-8'>
 									<Form className='login-form mb-5'>
+										{message && (
+											<div className='form-group'>
+												<div className='alert alert-danger' role='alert'>
+													{message}
+												</div>
+											</div>
+										)}
+
 										<div className='row'>
 											<div className='input-field col s12'>
 												<h5 className='ml-4'>Sign in</h5>
@@ -116,14 +126,6 @@ export default function Login() {
 									</Form>
 								</div>
 							</div>
-
-							{message && (
-								<div className='form-group'>
-									<div className='alert alert-danger' role='alert'>
-										{message}
-									</div>
-								</div>
-							)}
 						</div>
 						<div className='content-overlay' />
 					</div>

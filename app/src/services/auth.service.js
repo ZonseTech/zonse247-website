@@ -12,13 +12,7 @@ const login = (email, password) => {
 			email,
 			password,
 		})
-		.then((response) => {
-			if (response.data.accessToken) {
-				localStorage.setItem("user", JSON.stringify(response.data));
-			}
-
-			return response.data;
-		});
+		.then(response => response.data)
 };
 
 const logout = () => {
@@ -33,7 +27,7 @@ const confirmPassword = () => {
 	return;
 }
 
-const getCurrentUser = () => {
+const getUser = () => {
 	return JSON.parse(localStorage.getItem("user"));
 };
 
@@ -43,7 +37,7 @@ const AuthService = {
 	logout,
 	resetPassword,
 	confirmPassword,
-	getCurrentUser,
+	getUser,
 };
 
 export default AuthService;

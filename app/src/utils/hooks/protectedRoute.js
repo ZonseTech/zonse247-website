@@ -1,12 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../store/App.Context";
+import AppToken from "../../store/AppToken";
 
 const ProtectedRoute = ({ children }) => {
-	const { token } = useAuth();
+	const token = AppToken();
 	const location = useLocation();
 
 	if (!token) {
-		return <Navigate to="/" replace state={{ from: location }} />;
+		return <Navigate to="/login" replace state={{ from: location }} />;
 	}
 
 	return children;

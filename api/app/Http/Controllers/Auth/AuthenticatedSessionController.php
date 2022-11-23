@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Logged In Successfully',
+                'user' => auth()->user(),
                 'token' => auth()->user()->createToken("API TOKEN")->plainTextToken,
             ], 200);
 

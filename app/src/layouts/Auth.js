@@ -1,10 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import { PublicRoute } from '../utils/hooks/publicRoute'
 
 export default function Auth() {
 	return (
-		<div id='auth-section'>
-			<Outlet />
-		</div>
+		<PublicRoute>
+			<div id='auth-section'>
+				<Outlet />
+			</div>
+		</PublicRoute>
+
 	)
 }

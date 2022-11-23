@@ -9,7 +9,7 @@ import routes from './routes';
 import "./assets/css/App.css"
 import "./assets/css/Materialize.css"
 import "./assets/css/Vendors.css"
-import { ProvideAuth } from './store/App.Context';
+import { ProvideAuth } from './store/AuthContext';
 
 ReactDOM
   .createRoot(document.getElementById('root'))

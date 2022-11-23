@@ -10,7 +10,18 @@ function useProvideAuth() {
 	// Wrap any Firebase methods we want to use making sure ...
 	// ... to save the user to state.
 	const signin = (email, password) => {
-		return AuthService.login(email, password);
+		return AuthService.login(email, password)
+			.then((result) => {
+				if (result.token) {
+					localStorage.setItem("user", JSON.stringify(result.user));
+					localStorage.setItem("token", JSON.stringify(result.token));
+
+					setUser(AuthService.getUser())
+				}
+
+				return { status: result.status };
+			})
+
 	};
 
 	const signup = (data) => {
@@ -36,7 +47,7 @@ function useProvideAuth() {
 	useEffect(() => {
 		const unsubscribe = (user) => {
 			if (user) {
-				setUser(AuthService.getCurrentUser());
+				setUser(AuthService.getUser());
 			} else {
 				setUser(false);
 			}
