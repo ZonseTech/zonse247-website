@@ -1,14 +1,20 @@
 import React from "react";
-
+import { Outlet, useNavigation } from "react-router-dom";
+import Loading from "../components/Loading";
+import { ProtectedRoute } from "../utils/hooks/protectedRoute";
 
 function App() {
-  // const [user, setUser] = useState({})
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const navigation = useNavigation();
 
   return (
-    <>
-      App
-    </>
+    <ProtectedRoute>
+      <div className='container'>
+        {(navigation.state === "loading") && <Loading isLoading={true} message="Loading" />}
+        {/* topNavbar */}
+        <Outlet />
+        {/* footer */}
+      </div>
+    </ProtectedRoute>
   );
 }
 

@@ -9,15 +9,16 @@ import routes from './routes';
 import "./assets/css/App.css"
 import "./assets/css/Materialize.css"
 import "./assets/css/Vendors.css"
-
-console.log(process.env);
+import { ProvideAuth } from './store/App.Context';
 
 ReactDOM
   .createRoot(document.getElementById('root'))
   .render(
     <React.StrictMode>
+      <ProvideAuth>
 
-      <RouterProvider router={createBrowserRouter(routes, {})} />
+        <RouterProvider router={createBrowserRouter(routes, {})} />
 
+      </ProvideAuth>
     </React.StrictMode>
   );

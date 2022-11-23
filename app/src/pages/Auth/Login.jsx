@@ -1,15 +1,37 @@
-import React from 'react';
-import './Login.css';
-import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+
+import './Login.css';
 import { Checkbox, TextInput } from '../../components/Form';
+import AuthService from '../../services/auth.service';
 
 export default function Login() {
-	const handleSubmit = (values, { setSubmitting }) => {
-		setTimeout(() => {
-			alert(JSON.stringify(values, null, 2));
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const [message, setMessage] = useState('');
+
+	const handleLogin = (data, { setSubmitting }) => {
+		setTimeout(async () => {
+			AuthService.login(data.email, data.password).then(
+				() => {
+					const origin = location.state?.from?.pathname || '/dashboard';
+					navigate(origin);
+				},
+				(error) => {
+					const resMessage =
+						(error.response &&
+							error.response.data &&
+							error.response.data.message) ||
+						error.message ||
+						error.toString();
+
+					setSubmitting(false);
+					setMessage(resMessage);
+				}
+			);
 
 			setSubmitting(false);
 		}, 400);
@@ -18,18 +40,18 @@ export default function Login() {
 	return (
 		<Formik
 			initialValues={{
-				username: '',
+				email: '',
 				password: '',
 				rememberMe: false,
 			}}
 			validationSchema={Yup.object({
-				username: Yup.string()
+				email: Yup.string()
 					.max(15, 'Must be 15 characters or less')
-					.required('Please enter your username'),
+					.required('Please enter your email'),
 
 				password: Yup.string().required('Password is required'),
 			})}
-			onSubmit={handleSubmit}>
+			onSubmit={handleLogin}>
 			<div
 				className='vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark preload-transitions 1-column login-bg blank-page blank-page'
 				data-open='click'
@@ -52,10 +74,10 @@ export default function Login() {
 													person_outline
 												</i>
 												<TextInput
-													label={'Username'}
-													id='username'
+													label={'Email'}
+													id='email'
 													type='text'
-													name='username'
+													name='email'
 												/>
 											</div>
 										</div>
@@ -94,6 +116,14 @@ export default function Login() {
 									</Form>
 								</div>
 							</div>
+
+							{message && (
+								<div className='form-group'>
+									<div className='alert alert-danger' role='alert'>
+										{message}
+									</div>
+								</div>
+							)}
 						</div>
 						<div className='content-overlay' />
 					</div>
