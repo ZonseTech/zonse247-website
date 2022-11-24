@@ -4,9 +4,10 @@ import AppToken from "../../store/AppToken";
 const PublicRoute = ({ children }) => {
 	const token = AppToken();
 	const location = useLocation();
+	const toDashboard = process.env.REDIRECT_TO_DASHBOARD
 
 	if (token) {
-		return <Navigate to="/dashboard" replace state={{ from: location }} />;
+		return <Navigate to={toDashboard} replace state={{ from: location }} />;
 	}
 
 	return children;

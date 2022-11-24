@@ -12,13 +12,14 @@ export default function Login() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [message, setMessage] = useState('');
+	const toDashboard = process.env.REACT_APP_REDIRECT_TO_DASHBOARD;
 
 	const handleLogin = (data, { setSubmitting }) => {
 		setTimeout(async () => {
 			auth.signin(data.email, data.password).then(
 				(result) => {
 					if (result.status) {
-						const origin = location.state?.from?.pathname || '/dashboard';
+						const origin = location.state?.from?.pathname || toDashboard;
 						navigate(origin);
 					}
 				},

@@ -4,6 +4,7 @@ import Loading from '../components/Loading';
 
 export default function Guest() {
 	const navigation = useNavigation();
+
 	return (
 		<div className='container'>
 			{(navigation.state === "loading") && <Loading isLoading={true} message="Loading" />}

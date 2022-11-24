@@ -17,6 +17,7 @@ const login = (email, password) => {
 
 const logout = () => {
 	localStorage.removeItem("user");
+	localStorage.removeItem("token");
 };
 
 const resetPassword = () => {
