@@ -1,63 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo-full-no-tagline.png';
+
+import './GuestTopNav.css';
 
 function GuestTopNav() {
 	return (
-		<>
-			{/* ======= Header ======= */}
-			<header id='header' className='fixed-top '>
-				<div className='container d-flex align-items-center justify-content-between'>
-					<h1 className='logo'>
-						<a href='index.html'>Techie</a>
-					</h1>
-					{/* Uncomment below if you prefer to use an image logo */}
-					{/* <a href='index.html' class='logo'>
-						<img src='assets/images/logo.png' alt='' class='img-fluid' />
-					</a> */}
-					<nav id='navbar' className='navbar'>
-						<ul>
-							<li>
-								<a className='nav-link scrollto active' href='#hero'>
-									Home
-								</a>
-							</li>
-							<li>
-								<a className='nav-link scrollto' href='#about'>
-									About
-								</a>
-							</li>
-							<li>
-								<a className='nav-link scrollto' href='#services'>
-									Services
-								</a>
-							</li>
-							<li>
-								<a className='nav-link scrollto ' href='#portfolio'>
-									Portfolio
-								</a>
-							</li>
-							<li>
-								<a className='nav-link scrollto' href='#team'>
-									Team
-								</a>
-							</li>
-							<li>
-								<a className='nav-link scrollto' href='#contact'>
-									Contact
-								</a>
-							</li>
-							<li>
-								<a className='getstarted scrollto' href='#about'>
-									Get Started
-								</a>
-							</li>
-						</ul>
-						<i className='bi bi-list mobile-nav-toggle' />
-					</nav>
-					{/* .navbar */}
+		<header className='header'>
+			<nav className='gradient-45deg-purple-deep-orange gradient-shadow'>
+				<div className='nav-wrapper'>
+					<Link href={'/'} className='brand-logo ml-2 logo'>
+						<img src={logo} alt='' className='mt-1' />
+					</Link>
+
+					<Link
+						href='#'
+						data-target='mobile-demo2'
+						className='button-collapse sidenav-trigger hide-on-med-and-up'>
+						menu
+					</Link>
+					<ul className='right hide-on-med-and-down'>
+						<li>
+							<Link to={'#about'}>{'About'}</Link>
+						</li>
+						<li>
+							<Link
+								className='btn waves-effect waves-light gradient-45deg-purple-deep-orange white-text'
+								href='#'>
+								Get Started
+							</Link>
+						</li>
+					</ul>
 				</div>
-			</header>
-			{/* End Header */}
-		</>
+			</nav>
+		</header>
 	);
 }
 

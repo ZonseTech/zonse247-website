@@ -9,7 +9,7 @@ export default function Guest() {
 		<>
 			<GuestTopNav />
 			<Outlet />
-			<GuestFooter />
+			{/* <GuestFooter /> */}
 		</>
 	);
 }
