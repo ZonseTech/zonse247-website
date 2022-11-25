@@ -6,9 +6,14 @@ import {
 
 import routes from './routes';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import "./assets/css/App.css"
-import "./assets/css/Materialize.css"
+// import "./assets/css/Materialize.css"
 import "./assets/css/Vendors.css"
+
+import "./assets/css/custom.css"
+
 import { ProvideAuth } from './store/AuthContext';
 
 ReactDOM

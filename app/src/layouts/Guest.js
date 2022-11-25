@@ -1,16 +1,15 @@
 import React from 'react'
-import { Outlet, useNavigation } from 'react-router-dom'
-import Loading from '../components/Loading';
+import { Outlet } from 'react-router-dom'
+import GuestFooter from '../core/GuestFooter';
+import GuestTopNav from '../core/GuestTopNav';
 
 export default function Guest() {
-	const navigation = useNavigation();
 
 	return (
-		<div className='container'>
-			{(navigation.state === "loading") && <Loading isLoading={true} message="Loading" />}
-			{/* topNavbar */}
+		<>
+			<GuestTopNav />
 			<Outlet />
-			{/* footer */}
-		</div>
+			<GuestFooter />
+		</>
 	);
 }
