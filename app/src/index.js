@@ -4,11 +4,15 @@ import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom";
 
+
 import routes from './routes';
 
-import "./assets/css/App.css"
-import "./assets/css/Materialize.css"
-import "./assets/css/Vendors.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+// import "./assets/css/App.css"
+// import "./assets/css/Materialize.css"
+// import "./assets/css/Vendors.css"
 
 import { ProvideAuth } from './store/AuthContext';
 

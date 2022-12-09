@@ -22,8 +22,59 @@ export default [
 				},
 			},
 			{
+				path: '/solutions',
+				// element: <Guest />,
+				children: [
+					{
+						index: true,
+						path: '/solutions/software-development',
+						element: <div>Software Development</div>,
+					},
+					{
+						index: true,
+						path: '/solutions/home-automation',
+						element: <div>home automation</div>,
+					},
+					{
+						index: true,
+						path: '/solutions/hosting',
+						element: <div>hosting</div>,
+					},
+					{
+						index: true,
+						path: '/solutions/it-consulting',
+						element: <div>it consulting</div>,
+					},
+					{
+						index: true,
+						path: '/solutions/data-management',
+						element: <div>data management</div>,
+					},
+				],
+			},
+			{
+				path: '/about',
+				// element: <Guest />,
+				children: [
+					{
+						index: true,
+						path: '/about/our-team',
+						element: <div>our team</div>,
+					},
+					{
+						index: true,
+						path: '/about/our-clients',
+						element: <div>our clients</div>,
+					},
+				],
+			},
+			{
 				element: <Privacy />,
-				path: 'privacy',
+				path: '/news',
+			},
+			{
+				element: <Privacy />,
+				path: '/pricing',
 			},
 			{
 				element: <ContactUs />,

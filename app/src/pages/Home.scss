@@ -1,0 +1,29 @@
+$color_1: #444444;
+$color_2: #5846f9;
+$color_3: #8577fb;
+$font-family_1: "Open Sans", sans-serif;
+$font-family_2: "Poppins", sans-serif;
+
+body {
+	font-family: $font-family_1;
+	color: $color_1;
+}
+
+a {
+	color: $color_2;
+	text-decoration: none;
+
+	&:hover {
+		color: $color_3;
+		text-decoration: none;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-family_2;
+}

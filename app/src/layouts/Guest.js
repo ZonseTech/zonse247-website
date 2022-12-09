@@ -1,15 +1,15 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import GuestFooter from '../core/GuestFooter';
-import GuestTopNav from '../core/GuestTopNav';
+import Footer from '../pages/Home/Footer';
+import Header from '../pages/Home/Header';
 
 export default function Guest() {
 
 	return (
 		<>
-			<GuestTopNav />
+			<Header />
 			<Outlet />
-			{/* <GuestFooter /> */}
+			<Footer />
 		</>
 	);
 }
