@@ -7,7 +7,6 @@ import {
 import routes from './routes';
 import { ProvideAuth } from './store/AuthContext';
 
-import M from 'materialize-css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '@fontsource/roboto/300.css';
@@ -20,7 +19,7 @@ ReactDOM
   .render(
     <React.StrictMode>
       <ProvideAuth>
-        <RouterProvider router={createBrowserRouter(routes, { m: M })} />
+        <RouterProvider router={createBrowserRouter(routes, {})} />
       </ProvideAuth>
     </React.StrictMode>
   );
