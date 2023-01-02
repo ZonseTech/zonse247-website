@@ -1,10 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+
+
 
 export default function Exception() {
 	return (
-		<div id='exception-section'>
+		<ThemeProvider>
 			<Outlet />
-		</div>
+		</ThemeProvider>
 	);
 }
