@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
 		--color-secondary: #f85a40;
 	}
 
+	.active {
+		color: red;
+	}
+
 	section {
 		padding: 60px 0;
 		overflow: hidden;

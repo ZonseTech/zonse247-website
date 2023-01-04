@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
@@ -13,6 +13,26 @@ import logo from '../../assets/images/logo-full-no-tagline.png';
 import { useScroll } from '../../utils/scroll';
 
 const login = process.env.REACT_APP_REDIRECT_TO_LOGIN;
+
+/* const NavLink = React.forwardRef(
+	({ activeClassName, activeStyle, ...props }, ref) => {
+		return (
+			<BaseNavLink
+				ref={ref}
+				{...props}
+				className={({ isActive }) =>
+					[props.className, isActive ? activeClassName : null]
+						.filter(Boolean)
+						.join(' ')
+				}
+				style={({ isActive }) => ({
+					...props.style,
+					...(isActive ? activeStyle : null),
+				})}
+			/>
+		);
+	}
+); */
 
 const Logo = styled(Navbar.Brand)`
 		font-size: 30px;
@@ -38,7 +58,7 @@ const Logo = styled(Navbar.Brand)`
 		background: rgb(21, 114, 123);
 		${(props) => props.color && HeaderTopOnScroll};
 	`,
-	NavLink = styled(Nav.Link)`
+	CustomNavLink = styled(NavLink)`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -98,9 +118,9 @@ function Header() {
 
 				<Navbar.Collapse id='navbar-mobile'>
 					<Nav className='justify-content-end' style={{ width: '100%' }}>
-						<NavLink as={Link} to={'./'}>
+						<CustomNavLink to={'./'} end>
 							{'Home'}
-						</NavLink>
+						</CustomNavLink>
 
 						<Category
 							title={<span className='text-white rounded-0'>{'About'}</span>}
@@ -156,16 +176,10 @@ function Header() {
 							</NavDropdown.Item>
 						</Category>
 
-						<NavLink as={Link} to='/news'>
-							{'News'}
-						</NavLink>
+						<CustomNavLink to='/news'>{'News'}</CustomNavLink>
 
-						<NavLink as={Link} to='/pricing'>
-							{'Pricing'}
-						</NavLink>
-						<NavLink as={Link} to='/contact-us'>
-							{'Contact Us'}
-						</NavLink>
+						<CustomNavLink to='/pricing'>{'Pricing'}</CustomNavLink>
+						<CustomNavLink to='/contact-us'>{'Contact Us'}</CustomNavLink>
 						<GetStartedButton to={login} as={Link}>
 							{'Create Account'}
 						</GetStartedButton>
