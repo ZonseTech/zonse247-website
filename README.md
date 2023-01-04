@@ -1,4 +1,5 @@
 # expense-tracker
+
 Income tracking app
 
-Built in Vue and Laravel
+Built in ReactJs, Material UI, Bootstrap and Laravel
