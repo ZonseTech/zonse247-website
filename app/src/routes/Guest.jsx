@@ -8,8 +8,8 @@ import {
 	OurClients,
 	OurTeam,
 	Pricing,
+	Solutions,
 } from '../pages/Home';
-import Solutions from '../pages/Home/Solutions';
 
 // eslint-disable-next-line
 export default [
