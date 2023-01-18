@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.active {
-		color: red;
+		color: orange;
 	}
 
 	section {

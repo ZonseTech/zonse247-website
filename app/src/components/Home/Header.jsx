@@ -70,6 +70,7 @@ const Logo = styled(Navbar.Brand)`
 		transition: 0.3s;
 		text-decoration: none;
 	`,
+	// eslint-disable-next-line
 	Category = styled(NavDropdown)`
 		right: -15px;
 		transition: 0.3s;
@@ -122,24 +123,11 @@ function Header() {
 							{'Home'}
 						</CustomNavLink>
 
-						<Category
-							title={<span className='text-white rounded-0'>{'About'}</span>}
-							id='about-dropdown'>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/about/our-team'}>
-								{'Our Team'}
-							</NavDropdown.Item>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/about/our-clients'}>
-								{'Our Clients'}
-							</NavDropdown.Item>
-						</Category>
+						<CustomNavLink to={'/about/our-client'}>{'About'}</CustomNavLink>
 
-						<Category
+						<CustomNavLink to={'/solutions'}>{'Solutions'}</CustomNavLink>
+
+						{/* <Category
 							title={
 								<span className='text-white rounded-0'>{'Solutions'}</span>
 							}
@@ -174,7 +162,7 @@ function Header() {
 								to={'/solutions/it-consulting'}>
 								{'IT Consulting'}
 							</NavDropdown.Item>
-						</Category>
+						</Category> */}
 
 						<CustomNavLink to='/news'>{'News'}</CustomNavLink>
 
