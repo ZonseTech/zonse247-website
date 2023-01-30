@@ -2,11 +2,13 @@ import React from 'react';
 import E404 from '../errors/E404';
 import Guest from '../layouts/Guest';
 import {
+	CompanyHistory,
+	CompanyProfile,
 	ContactUs,
 	LandingPage,
 	News,
-	OurClients,
 	OurTeam,
+	Partners,
 	Pricing,
 	Solutions,
 } from '../pages/Home';
@@ -31,13 +33,24 @@ export default [
 				children: [
 					{
 						index: true,
+						name: 'aboutOverview',
+						path: '/about/company-profile',
+						element: <CompanyProfile />,
+					},
+					{
+						name: 'companyHistory',
+						path: '/about/company-history',
+						element: <CompanyHistory />,
+					},
+					{
+						name: 'ourTeam',
 						path: '/about/our-team',
 						element: <OurTeam />,
 					},
 					{
-						index: true,
-						path: '/about/our-clients',
-						element: <OurClients />,
+						name: 'ourPartners',
+						path: '/about/our-partners',
+						element: <Partners />,
 					},
 				],
 			},

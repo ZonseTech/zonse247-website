@@ -51,19 +51,19 @@ export default function About() {
 					<Col lg={12} className='pt-4 pt-lg-0'>
 						<p>
 							{
-								'REGISTER is an international leader in digital services for professionals and SMBs. We are aimed to be the best partner in the online business growing, through the creation of the online identity and the promotion and protection of the brand. '
+								"Zonse Investment is a multifaceted investment company specializing in various business ventures that cater to diverse markets. We offer an array of services including farming, vending, stationary shop, gaming center, website development and website hosting. Our mission is to provide innovative and sustainable solutions that empower businesses and individuals to grow and succeed in today's rapidly changing world."
 							}
 						</p>
 
 						<p>
 							{
-								'REGISTER is one of the leading names in the European Domain & Hosting segment and ranking among the top groups in all geographies in which the Group operates: in Italy through its established brands Register.it, Sfera, Etinet and Dominiando as well as in the UK, Ireland, Spain, France, Portugal and the Netherlands under the Namesco, Simply Hosting, Tagadab, LCN Register365, LetsHost, Hosting Ireland, Nominalia, Dominios.pt, Iberweb and Amen brands.'
+								'We understand that each market has its unique challenges and we work tirelessly to ensure that our clients have the resources and support they need to succeed. Our team of experts brings a wealth of experience and knowledge to the table, helping our clients navigate the complex landscape of business and investment..'
 							}
 						</p>
 
 						<p>
 							{
-								'Over the past few years, the REGISTER Group has focused its resources on the development of the D&H business, investing in a cutting-edge, integrated technology infrastructure, which includes the proprietary Data center completed in 2015 and the network of international Data Centers, the integration of the operating platforms and the development of the product portfolio, stepping up services in “We do it for you” mode and anticipating relevant market trends. To date, the Dada Group is one of the top European players in online presence and visibility services for SMEs.'
+								'At Zonse Investment, we believe in creating opportunities for growth and success, and we are committed to providing our clients with the tools and resources they need to achieve their goals. Whether you are looking to start a new business, expand your current operations, or simply need a reliable website development and hosting provider, Zonse Investment has the expertise and resources to help you succeed.'
 							}
 						</p>
 
