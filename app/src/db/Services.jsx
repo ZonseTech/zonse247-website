@@ -1,32 +1,41 @@
+import {
+	FaCar,
+	FaDev,
+	FaGamepad,
+	FaPrint,
+	FaTractor,
+	FaUniversalAccess,
+} from 'react-icons/fa';
+
 export const Services = [
 	{
-		icon: '',
-		title: '',
+		icon: <FaDev />,
+		title: 'Software & Hardware Solutions',
 		description: '',
 	},
 	{
-		icon: '',
-		title: '',
+		icon: <FaUniversalAccess />,
+		title: 'Computer & phone accessories',
 		description: '',
 	},
 	{
-		icon: '',
-		title: '',
+		icon: <FaPrint />,
+		title: 'Stationary &  Internet café',
 		description: '',
 	},
 	{
-		icon: '',
-		title: '',
+		icon: <FaGamepad />,
+		title: 'Gaming Center',
 		description: '',
 	},
 	{
-		icon: '',
-		title: '',
+		icon: <FaTractor />,
+		title: 'Agribusiness',
 		description: '',
 	},
 	{
-		icon: '',
-		title: '',
+		icon: <FaCar />,
+		title: 'Equipment rental agency',
 		description: '',
 	},
 ];

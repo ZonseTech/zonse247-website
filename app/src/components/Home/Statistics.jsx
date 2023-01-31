@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import StatisticsImage from '../../assets/images/stats-img.svg';
+import './Statistics.scss';
 
 const StatisticItem = styled.div(css`
 	padding: 30px;
@@ -35,8 +36,8 @@ const StatisticItem = styled.div(css`
 `);
 
 export default function Statistics() {
-	return (
-		<section id='stats-counter' className='stats-counter'>
+	{
+		/* <section id='stats-counter' className='stats-counter'>
 			<div className='container'>
 				<div className='row gy-4 align-items-center'>
 					<div className='col-lg-8'>
@@ -68,6 +69,39 @@ export default function Statistics() {
 									<p>Workers</p>
 								</StatisticItem>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> */
+	}
+	return (
+		<section
+			id='contact'
+			className='contact-section cta-bg img-bg pt-110 pb-100'
+			style={{
+				backgroundImage:
+					'url(https://demo.graygrids.com/themes/space/assets/img/bg/xcta-bg.jpg.pagespeed.ic.lD7u3bAeTc.webp)',
+			}}>
+			<div class='container'>
+				<div class='row align-items-center'>
+					<div class='col-xl-5 col-lg-7'>
+						<div class='section-title mb-60'>
+							<span class='text-white wow fadeInDown'>Contact</span>
+							<h2 class='text-white wow fadeInUp'>
+								Do you have any project Right now?
+							</h2>
+							<p class='text-white wow fadeInUp'>
+								At vero eos et accusamus et iusto odio dignissimos ducimus
+								quiblanditiis praesentium
+							</p>
+						</div>
+					</div>
+					<div class='col-xl-7 col-lg-5'>
+						<div class='contact-btn text-start text-lg-end'>
+							<a href='contact.html' class='theme-btn'>
+								Contact Now
+							</a>
 						</div>
 					</div>
 				</div>

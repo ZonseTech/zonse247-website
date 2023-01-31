@@ -90,6 +90,17 @@ const Logo = styled(Navbar.Brand)`
 			color: #47b2e4;
 		}
 
+		.dropdown-menu {
+			padding-top: 0;
+			padding-bottom: 0;
+			border-radius: 0;
+		}
+
+		.dropdown-item {
+			padding: 12px 20px;
+			font-size: medium;
+		}
+
 		.dropdown-toggle::after {
 			content: none;
 		}
@@ -104,6 +115,25 @@ const Logo = styled(Navbar.Brand)`
 		font-weight: 600;
 		text-decoration: none;
 	`;
+
+const AboutUs = [
+	{
+		name: 'Overview',
+		link: '/about/company-profile',
+	},
+	{
+		name: 'Company History',
+		link: '/about/company-history',
+	},
+	{
+		name: 'Our Team',
+		link: '/about/our-team',
+	},
+	{
+		name: 'Partners',
+		link: '/about/our-partners',
+	},
+];
 
 function Header() {
 	const scrollY = useScroll();
@@ -123,46 +153,26 @@ function Header() {
 							{'Home'}
 						</CustomNavLink>
 
-						<CustomNavLink to={'/about/our-client'}>{'About'}</CustomNavLink>
+						{
+							<Category
+								title={
+									<span className='text-white rounded-0'>{'About Us'}</span>
+								}
+								id='solutions-dropdown'
+								className='py-0'>
+								{AboutUs.map((about, key) => (
+									<NavDropdown.Item
+										className='text-success'
+										as={Link}
+										key={key}
+										to={about.link}>
+										{about.name}
+									</NavDropdown.Item>
+								))}
+							</Category>
+						}
 
 						<CustomNavLink to={'/solutions'}>{'Solutions'}</CustomNavLink>
-
-						{/* <Category
-							title={
-								<span className='text-white rounded-0'>{'Solutions'}</span>
-							}
-							id='solutions-dropdown'>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/solutions/software-development'}>
-								{'Software Development'}
-							</NavDropdown.Item>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/solutions/home-automation'}>
-								{'Home Automation'}
-							</NavDropdown.Item>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/solutions/hosting'}>
-								{'Hosting'}
-							</NavDropdown.Item>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/solutions/data-management'}>
-								{'Data Management'}
-							</NavDropdown.Item>
-							<NavDropdown.Item
-								className='text-success'
-								as={Link}
-								to={'/solutions/it-consulting'}>
-								{'IT Consulting'}
-							</NavDropdown.Item>
-						</Category> */}
 
 						<CustomNavLink to='/news'>{'News'}</CustomNavLink>
 

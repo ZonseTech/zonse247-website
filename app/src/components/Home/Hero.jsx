@@ -6,12 +6,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { BiPlayCircle } from 'react-icons/bi';
+import {
+	BiBriefcaseAlt,
+	BiCommand,
+	BiGame,
+	BiGlobeAlt,
+	BiPlayCircle,
+} from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
 import bground from '../../assets/images/hero-bg.jpg';
 import heroImg from '../../assets/images/hero-img.png';
+
+import './HeroCard.scss';
 
 const login = process.env.REACT_APP_REDIRECT_TO_LOGIN;
 
@@ -166,6 +174,70 @@ function Hero() {
 					</Col>
 				</Row>
 			</Container>
+
+			<div className='icon-boxes position-relative'>
+				<div className='container position-relative'>
+					<div className='row gy-4 mt-5'>
+						<div className='col-xl-3 col-md-6 aos-init aos-animate'>
+							<div className='icon-box'>
+								<div className='icon'>
+									<BiBriefcaseAlt />
+								</div>
+								<h4 className='title'>
+									<a href='./hello' className='stretched-link'>
+										Lorem Ipsum
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div
+							className='col-xl-3 col-md-6 aos-init aos-animate'
+							data-aos='fade-up'
+							data-aos-delay='200'>
+							<div className='icon-box'>
+								<div className='icon'>
+									<BiGame />
+								</div>
+								<h4 className='title'>
+									<a href='./hello' className='stretched-link'>
+										Sed ut perspiciatis
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div
+							className='col-xl-3 col-md-6 aos-init aos-animate'
+							data-aos='fade-up'
+							data-aos-delay='300'>
+							<div className='icon-box'>
+								<div className='icon'>
+									<BiGlobeAlt />
+								</div>
+								<h4 className='title'>
+									<a href='./hello' className='stretched-link'>
+										Magni Dolores
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div
+							className='col-xl-3 col-md-6 aos-init aos-animate'
+							data-aos='fade-up'
+							data-aos-delay='500'>
+							<div className='icon-box'>
+								<div className='icon'>
+									<BiCommand />
+								</div>
+								<h4 className='title'>
+									<a href='./hello' className='stretched-link'>
+										Nemo Enim
+									</a>
+								</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</Section>
 	);
 }

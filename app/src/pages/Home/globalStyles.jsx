@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.section-title {
-		/* text-align: center; */
+		text-align: center;
 		padding-bottom: 30px;
 
 		h2 {
@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
 				height: 1px;
 				background: #ddd;
 				bottom: 1px;
+				left: calc(50% - 60px);
 			}
 
 			&::after {
@@ -51,14 +52,18 @@ const GlobalStyle = createGlobalStyle`
 				height: 3px;
 				background: rgba(19, 89, 83, 0.85);
 				bottom: 0;
+				left: calc(50% - 20px);
 			}
 		}
 
 		p {
 			color: #6f6f6f;
 			margin-bottom: 0;
+			font-size: 18px;
 		}
 	}
+
+
 
 `;
 
