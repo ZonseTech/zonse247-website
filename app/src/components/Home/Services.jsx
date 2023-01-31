@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import styled, { css } from 'styled-components';
-import { FaLongArrowAltRight, FaBlog } from 'react-icons/fa';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 import { Services as services } from '../../db/Services';
 
@@ -101,15 +101,9 @@ export default function Services() {
 					{services.map((service, key) => (
 						<Col lg={4} md={'6'} key={key}>
 							<SectionItem className='position-relative'>
-								<div className='icon'>
-									<FaBlog />
-								</div>
-								<h3>Nesciunt Mete</h3>
-								<p>
-									Provident nihil minus qui consequatur non omnis maiores. Eos
-									accusantium minus dolores iure perferendis tempore et
-									consequatur.
-								</p>
+								<div className='icon'>{service.icon}</div>
+								<h3>{service.title}</h3>
+								<p>{service.description}</p>
 								<ReadMoreButton className='stretched-link'>
 									Read more <FaLongArrowAltRight />
 								</ReadMoreButton>

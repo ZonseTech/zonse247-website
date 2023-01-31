@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
 import styled, { css } from 'styled-components';
+import './About.scss';
 
 const AboutSection = styled.section(css`
 		h3 {
@@ -13,6 +14,9 @@ const AboutSection = styled.section(css`
 			font-size: 26px;
 		}
 		p {
+			font-size: 16px;
+			font-weight: 400;
+
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -41,11 +45,15 @@ const AboutSection = styled.section(css`
 	`;
 
 export default function About() {
-	return (
-		<AboutSection>
+	{
+		/* <AboutSection>
 			<Container>
 				<div className='section-title'>
 					<h2>{'Who are we'}</h2>
+					<p>
+						At vero eos et accusamus et iusto odio dignissimos ducimus
+						quiblanditiis praesentium
+					</p>
 				</div>
 				<Row>
 					<Col lg={12} className='pt-4 pt-lg-0'>
@@ -71,6 +79,85 @@ export default function About() {
 					</Col>
 				</Row>
 			</Container>
-		</AboutSection>
+		</AboutSection> */
+	}
+
+	return (
+		<section id='about' class='pt-5'>
+			<div class='about-section'>
+				<div class='container'>
+					<div class='row'>
+						<div class='col-xl-6 col-lg-6'>
+							<div class='about-img-wrapper'>
+								<div class='about-img position-relative d-inline-block wow fadeInLeft'>
+									<img
+										alt=''
+										data-pagespeed-url-hash='2037241712'
+										src='https://demo.graygrids.com/themes/space/assets/img/about/about-img.png'
+										onerror='this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);'
+									/>
+									<div class='about-experience'>
+										<h3>5 Year Of Working Experience</h3>
+										<p>
+											We Crafted an aweso design library that is robust and
+											intuitive to use.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-xl-6 col-lg-6'>
+							<div class='about-content-wrapper'>
+								<div class='section-title'>
+									<span class='wow fadeInUp'>About Us</span>
+									<h2 class='mb-40 wow fadeInRight'>
+										Built-With Boostrap 5, a New Experiance
+									</h2>
+								</div>
+								<div class='about-content'>
+									<p class='mb-45 wow fadeInUp'>
+										We Crafted an awesome design library that is robust and
+										intuitive to use. No matter you're building a business
+										presentation websit or a complex web application our design
+									</p>
+									<div class='counter-up wow fadeInUp'>
+										<div class='counter'>
+											<span
+												id='secondo'
+												class='countup count color-1'
+												cup-end='30'
+												cup-append='k'>
+												30k
+											</span>
+											<h4>Happy Client</h4>
+											<p>
+												We Crafted an awesome design{' '}
+												<br class='d-none d-md-block d-lg-none d-xl-block' />{' '}
+												library that is robust and
+											</p>
+										</div>
+										<div class='counter'>
+											<span
+												id='secondo'
+												class='countup count color-2'
+												cup-end='42'
+												cup-append='k'>
+												42k
+											</span>
+											<h4>Project Done</h4>
+											<p>
+												We Crafted an awesome design{' '}
+												<br class='d-none d-md-block d-lg-none d-xl-block' />{' '}
+												library that is robust and
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	);
 }

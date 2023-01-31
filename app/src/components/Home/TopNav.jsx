@@ -65,13 +65,14 @@ export default function TopNav() {
 		<Section className='d-flex align-items-center'>
 			<Container className='d-flex justify-content-center justify-content-md-between'>
 				<ContactInfo className='d-flex align-items-center'>
-					<span className='d-flex align-items-center'>
-						<BiEnvelope />
-						<Link to='mailto:contact@example.com'>contact@example.com</Link>
-					</span>
+					<span className='d-flex align-items-center'>Need Help?</span>
 					<span className='d-flex align-items-center ms-4'>
 						<BiPhone />
-						<span>+1 5589 55488 55</span>
+						<span>+265 (0) 991 593 543</span>
+					</span>
+					<span className='d-flex align-items-center'>
+						<BiEnvelope />
+						<Link to='mailto:info@zonse.com'>info@zonse.com</Link>
 					</span>
 				</ContactInfo>
 				<SocialLinks className='d-none d-md-flex align-items-center'>
