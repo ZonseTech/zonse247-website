@@ -17,11 +17,11 @@ export default function LandingPage() {
 			minBreakpoint='xxs'>
 			<Hero />
 			<Stack>
-				<Clients />
 				<About />
 				<Statistics />
-				<CallToAction />
 				<Services />
+				<CallToAction />
+				<Clients />
 			</Stack>
 		</ThemeProvider>
 	);
