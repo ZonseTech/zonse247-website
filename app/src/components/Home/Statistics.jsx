@@ -86,21 +86,20 @@ export default function Statistics() {
 			<div class='container'>
 				<div class='row align-items-center'>
 					<div class='col-xl-5 col-lg-7'>
-						<div class='section-title mb-60'>
-							<span class='text-white wow fadeInDown'>Contact</span>
-							<h2 class='text-white wow fadeInUp'>
-								Do you have any project Right now?
-							</h2>
-							<p class='text-white wow fadeInUp'>
-								At vero eos et accusamus et iusto odio dignissimos ducimus
-								quiblanditiis praesentium
+						<div class='about-section-title mb-60'>
+							<span class='text-white text-uppercase'>Learn More</span>
+							<h2 class='text-white'>Download our company profile below</h2>
+							<p class='text-white'>
+								Discover our mission, values, and services in-depth. Get a
+								comprehensive understanding of how we can help you achieve your
+								goals
 							</p>
 						</div>
 					</div>
 					<div class='col-xl-7 col-lg-5'>
-						<div class='contact-btn text-start text-lg-end'>
+						<div class='contact-btn text-start text-lg-end text-uppercase'>
 							<a href='contact.html' class='theme-btn'>
-								Contact Now
+								Download Now
 							</a>
 						</div>
 					</div>
