@@ -89,7 +89,7 @@ export default function About() {
 					<div class='row'>
 						<div class='col-xl-6 col-lg-6'>
 							<div class='about-img-wrapper'>
-								<div class='about-img position-relative d-inline-block wow fadeInLeft'>
+								<div class='about-img position-relative d-inline-block '>
 									<img
 										alt=''
 										data-pagespeed-url-hash='2037241712'
@@ -108,19 +108,17 @@ export default function About() {
 						</div>
 						<div class='col-xl-6 col-lg-6'>
 							<div class='about-content-wrapper'>
-								<div class='section-title'>
-									<span class='wow fadeInUp'>About Us</span>
-									<h2 class='mb-40 wow fadeInRight'>
-										Built-With Boostrap 5, a New Experiance
-									</h2>
+								<div class='section-title' Style='text-align: left !important'>
+									<span>About Us</span>
+									<h2 class='mb-40'>Built-With Boostrap 5, a New Experiance</h2>
 								</div>
 								<div class='about-content'>
-									<p class='mb-45 wow fadeInUp'>
+									<p class='mb-45 '>
 										We Crafted an awesome design library that is robust and
 										intuitive to use. No matter you're building a business
 										presentation websit or a complex web application our design
 									</p>
-									<div class='counter-up wow fadeInUp'>
+									<div class='counter-up '>
 										<div class='counter'>
 											<span
 												id='secondo'
