@@ -1,30 +1,42 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-	:root {
+	$color_4: #6f6f6f;
+
+	&:root {
+		--color-white: #fff;
 		--color-default: #222222;
-		--color-primary: #008374;
-		--color-secondary: #f85a40;
-	}
+		--color-primary: rgb(21,114,123);
+		--color-secondary: rgba(19,89,83,0.85);
+		--color-warning: orange;
 
+		--bg-white: #f3f5fa;
+	}
 	.active {
-		color: orange;
+		color: var(--color-warning);
 	}
-
 	section {
 		padding: 60px 0;
 		overflow: hidden;
 	}
-
 	.section-bg {
-		background-color: #f3f5fa;
+		background-color: var(--bg-white);
 	}
-
 	.section-title {
-		text-align: center;
 		padding-bottom: 30px;
+		text-align: center;
+		
+		span {
+			font-size: 25px;
+			font-weight: 700;
+			color: var(--color-default);
+			margin-bottom: 5px;
+		}
 
 		h2 {
+			line-height: 55px;
+			font-weight: 600;
+			margin-bottom: 15px;
 			font-size: 32px;
 			font-weight: bold;
 			text-transform: uppercase;
@@ -43,7 +55,6 @@ const GlobalStyle = createGlobalStyle`
 				bottom: 1px;
 				left: calc(50% - 60px);
 			}
-
 			&::after {
 				content: "";
 				position: absolute;
@@ -55,16 +66,23 @@ const GlobalStyle = createGlobalStyle`
 				left: calc(50% - 20px);
 			}
 		}
-
 		p {
-			color: #6f6f6f;
+			font-size: 18px;
+			color: $color_4;
 			margin-bottom: 0;
 			font-size: 18px;
 		}
 	}
-
-
-
+	@media (max-width: 767px) {
+		.section-title {
+			span {
+				font-size: 20px;
+			}
+			h2 {
+				line-height: 41px;
+			}
+		}
+	}
 `;
 
 export default GlobalStyle;

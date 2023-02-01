@@ -1,6 +1,3 @@
-$color_1: #fff;
-$color_2: #239276;
-
 .about-section {
 	background: #fff;
 	padding: 180px 0;
@@ -22,7 +19,7 @@ $color_2: #239276;
 		.about-experience {
 			width: 300px;
 			border-radius: 27px;
-			background: linear-gradient(to top left, #239276 0%, #119c7b 100%);
+			background: linear-gradient(to top left, var(--color-primary) 0%, var(--color-secondary) 100%);
 			border: 5px solid #eff2f9;
 			padding: 40px 20px;
 			position: absolute;
@@ -32,12 +29,12 @@ $color_2: #239276;
 			h3 {
 				font-size: 26px;
 				font-weight: 700;
-				color: $color_1;
+				color: var(--color-white);
 				margin-bottom: 15px;
 			}
 
 			p {
-				color: $color_1;
+				color: var(--color-white);
 			}
 		}
 	}
@@ -58,7 +55,7 @@ $color_2: #239276;
 					span {
 						font-size: 40px;
 						font-weight: 600;
-						color: $color_2;
+						color: var(--color-primary);
 						display: block;
 						margin-bottom: 8px;
 					}
