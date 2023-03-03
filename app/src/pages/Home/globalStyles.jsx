@@ -1,14 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-	$color_4: #6f6f6f;
-
 	&:root {
 		--color-white: #fff;
 		--color-default: #222222;
 		--color-primary: rgb(21,114,123);
 		--color-secondary: rgba(19,89,83,0.85);
 		--color-warning: orange;
+		--color-grey: #6f6f6f6
 
 		--bg-white: #f3f5fa;
 	}
@@ -68,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
 		}
 		p {
 			font-size: 18px;
-			color: $color_4;
+			color: var(--color-grey);
 			margin-bottom: 0;
 			font-size: 18px;
 		}
