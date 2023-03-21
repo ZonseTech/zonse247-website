@@ -91,11 +91,6 @@ export default function Services() {
 			<Container>
 				<div className='section-title'>
 					<h2>Our Services</h2>
-					<p>
-						{
-							'We provide professional online solutions for individuals, businesses, developers and retailers. From total beginner to professional, our products and services have been designed thinking of performance and ease of use, to help anyone grows his business and takes advantage of the Web.'
-						}
-					</p>
 				</div>
 				<Row className='gy-4'>
 					{services.map((service, key) => (

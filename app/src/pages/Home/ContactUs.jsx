@@ -162,11 +162,11 @@ export default function ContactUs() {
 			<div className='container aos-init aos-animate' data-aos='fade-up'>
 				<div className='section-title'>
 					<h2>{'Contact Us'}</h2>
-					<p>
+					{/* <p>
 						{
 							'Zonse Technologies has proudly served clients seeking our services and products with precision and excellence for over three years. We often personally meet with clients, and speak at educational events on “everywhere”'
 						}
-					</p>
+					</p> */}
 				</div>
 
 				<div className='row gx-lg-0 gy-4'>
@@ -183,14 +183,14 @@ export default function ContactUs() {
 								<BiEnvelope className='bi bi-envelope flex-shrink-0' />
 								<div>
 									<h4>Email:</h4>
-									<p>info@example.com</p>
+									<p>info@zonse.com</p>
 								</div>
 							</div>
 							<div className='info-item d-flex'>
 								<BiPhone className='bi bi-phone flex-shrink-0' />
 								<div>
 									<h4>Call:</h4>
-									<p>+1 5589 55488 55</p>
+									<p>+265 991 593 543</p>
 								</div>
 							</div>
 							<div className='info-item d-flex'>
@@ -209,7 +209,6 @@ export default function ContactUs() {
 							className='php-email-form'>
 							<div className='row'>
 								<div className='col-md-6 form-group'>
-									{' '}
 									<input
 										type='text'
 										name='name'
@@ -220,7 +219,6 @@ export default function ContactUs() {
 									/>
 								</div>
 								<div className='col-md-6 form-group mt-3 mt-md-0'>
-									{' '}
 									<input
 										type='email'
 										className='form-control'
@@ -232,7 +230,6 @@ export default function ContactUs() {
 								</div>
 							</div>
 							<div className='form-group mt-3'>
-								{' '}
 								<input
 									type='text'
 									className='form-control'

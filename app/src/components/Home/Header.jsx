@@ -12,8 +12,6 @@ import styled, { css } from 'styled-components';
 import logo from '../../assets/images/logo-full-no-tagline.png';
 import { useScroll } from '../../utils/scroll';
 
-const login = process.env.REACT_APP_REDIRECT_TO_LOGIN;
-
 /* const NavLink = React.forwardRef(
 	({ activeClassName, activeStyle, ...props }, ref) => {
 		return (
@@ -122,16 +120,8 @@ const AboutUs = [
 		link: '/about/company-profile',
 	},
 	{
-		name: 'Company History',
-		link: '/about/company-history',
-	},
-	{
 		name: 'Our Team',
 		link: '/about/our-team',
-	},
-	{
-		name: 'Partners',
-		link: '/about/our-partners',
 	},
 ];
 
@@ -176,10 +166,8 @@ function Header() {
 
 						<CustomNavLink to='/news'>{'News'}</CustomNavLink>
 
-						<CustomNavLink to='/pricing'>{'Pricing'}</CustomNavLink>
-						<CustomNavLink to='/contact-us'>{'Contact Us'}</CustomNavLink>
-						<GetStartedButton to={login} as={Link}>
-							{'Create Account'}
+						<GetStartedButton to='/contact-us' as={Link}>
+							{'Contact Us'}
 						</GetStartedButton>
 					</Nav>
 				</Navbar.Collapse>

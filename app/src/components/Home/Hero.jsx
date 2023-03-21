@@ -6,13 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import {
-	BiBriefcaseAlt,
-	BiCommand,
-	BiGame,
-	BiGlobeAlt,
-	BiPlayCircle,
-} from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
@@ -121,24 +114,6 @@ const Animation = () => keyframes`
 			background: #fff;
 			color: #5846f9;
 		}
-	`,
-	WatchVideoButton = styled(Button)`
-		font-size: 16px;
-		display: flex;
-		align-items: center;
-		transition: 0.5s;
-		margin: 10px 0 0 25px;
-		color: #fff;
-		line-height: 1;
-		margin-top: 35px;
-		text-decoration: none;
-	`,
-	WatchVideoButtonIcon = styled(BiPlayCircle)`
-		line-height: 0;
-		color: #fff;
-		font-size: 32px;
-		transition: 0.3s;
-		margin-right: 8px;
 	`;
 
 function Hero() {
@@ -156,17 +131,8 @@ function Hero() {
 						</SubTitle>
 						<div className='d-flex justify-content-center justify-content-lg-start'>
 							<GetStartedButton to={login} as={Link}>
-								{'Get Started'}
+								{'Join Us'}
 							</GetStartedButton>
-
-							<WatchVideoButton
-								as={Link}
-								to='https://www.youtube.com/watch?v=jDDaplaOz7Q'
-								className='glightbox btn-watch-video'>
-								<WatchVideoButtonIcon />
-
-								<span>Watch Video</span>
-							</WatchVideoButton>
 						</div>
 					</Col>
 					<Col xs={12} md={6} className='order-1 order-lg-2'>
@@ -174,70 +140,6 @@ function Hero() {
 					</Col>
 				</Row>
 			</Container>
-
-			<div className='icon-boxes position-relative'>
-				<div className='container position-relative'>
-					<div className='row gy-4 mt-5'>
-						<div className='col-xl-3 col-md-6 aos-init aos-animate'>
-							<div className='icon-box'>
-								<div className='icon'>
-									<BiBriefcaseAlt />
-								</div>
-								<h4 className='title'>
-									<a href='./hello' className='stretched-link'>
-										Lorem Ipsum
-									</a>
-								</h4>
-							</div>
-						</div>
-						<div
-							className='col-xl-3 col-md-6 aos-init aos-animate'
-							data-aos='fade-up'
-							data-aos-delay='200'>
-							<div className='icon-box'>
-								<div className='icon'>
-									<BiGame />
-								</div>
-								<h4 className='title'>
-									<a href='./hello' className='stretched-link'>
-										Sed ut perspiciatis
-									</a>
-								</h4>
-							</div>
-						</div>
-						<div
-							className='col-xl-3 col-md-6 aos-init aos-animate'
-							data-aos='fade-up'
-							data-aos-delay='300'>
-							<div className='icon-box'>
-								<div className='icon'>
-									<BiGlobeAlt />
-								</div>
-								<h4 className='title'>
-									<a href='./hello' className='stretched-link'>
-										Magni Dolores
-									</a>
-								</h4>
-							</div>
-						</div>
-						<div
-							className='col-xl-3 col-md-6 aos-init aos-animate'
-							data-aos='fade-up'
-							data-aos-delay='500'>
-							<div className='icon-box'>
-								<div className='icon'>
-									<BiCommand />
-								</div>
-								<h4 className='title'>
-									<a href='./hello' className='stretched-link'>
-										Nemo Enim
-									</a>
-								</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</Section>
 	);
 }

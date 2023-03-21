@@ -1,52 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
-import styled, { css } from 'styled-components';
 import './About.scss';
-
-const AboutSection = styled.section(css`
-		h3 {
-			font-weight: 600;
-			font-size: 26px;
-		}
-		p {
-			font-size: 16px;
-			font-weight: 400;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-	`),
-	ButtonReadMore = styled(Link)`
-		font-weight: 500;
-		font-size: 14px;
-		letter-spacing: 1px;
-		display: inline-block;
-		padding: 12px 32px;
-		border-radius: 4px;
-		transition: 0.3s;
-		line-height: 1;
-		color: rgba(19, 89, 83, 0.85);
-		-webkit-animation-delay: 0.8s;
-		animation-delay: 0.8s;
-		margin-top: 6px;
-		text-decoration: none;
-		border: 2px solid rgba(19, 89, 83, 0.85);
-
-		&:hover {
-			background: rgba(19, 89, 83, 0.85);
-			color: #fff;
-		}
-	`;
+import { HeroImage } from '../../assets/images';
 
 export default function About() {
-	{
-		/* <AboutSection>
+	/* return (
+		<AboutSection>
 			<Container>
 				<div className='section-title'>
 					<h2>{'Who are we'}</h2>
@@ -79,50 +41,50 @@ export default function About() {
 					</Col>
 				</Row>
 			</Container>
-		</AboutSection> */
-	}
+		</AboutSection>
+	); */
 
 	return (
-		<section id='about' class='pt-5'>
-			<div class='about-section'>
-				<div class='container'>
-					<div class='row'>
-						<div class='col-xl-6 col-lg-6'>
-							<div class='about-img-wrapper'>
-								<div class='about-img position-relative d-inline-block '>
-									<img
-										alt=''
-										data-pagespeed-url-hash='2037241712'
-										src='https://demo.graygrids.com/themes/space/assets/img/about/about-img.png'
-										onerror='this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);'
-									/>
-									<div class='about-experience'>
+		<section className='pt-5'>
+			<div className='about-section'>
+				<Container>
+					<Row>
+						<Col xl={6} lg={6}>
+							<div className='about-img-wrapper'>
+								<div className='about-img position-relative d-inline-block '>
+									<img alt='Zonse About' src={HeroImage} />
+									<div className='about-experience'>
 										<h3>5 Year Of Working Experience</h3>
 										<p>
-											We Crafted an aweso design library that is robust and
-											intuitive to use.
+											{
+												'Multifaceted investment company specializing in various business ventures that cater to diverse markets.'
+											}
 										</p>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class='col-xl-6 col-lg-6'>
-							<div class='about-content-wrapper'>
-								<div class='section-title' Style='text-align: left !important'>
+						</Col>
+						<Col xl={6} lg={6}>
+							<div className='about-content-wrapper'>
+								<div
+									className='section-title'
+									Style='text-align: left !important'>
 									<span>About Us</span>
-									<h2 class='mb-40'>Built-With Boostrap 5, a New Experiance</h2>
+									<h2 className='mb-40'>
+										{'We speak all kind of technologies.'}
+									</h2>
 								</div>
-								<div class='about-content'>
-									<p class='mb-45 '>
-										We Crafted an awesome design library that is robust and
-										intuitive to use. No matter you're building a business
-										presentation websit or a complex web application our design
+								<div className='about-content'>
+									<p className='mb-45 '>
+										{
+											'We provide professional online solutions for individuals, businesses, developers and retailers. From total beginner to professional, our products and services have been designed thinking of performance and ease of use, to help anyone grows his business and takes advantage of the Web.'
+										}
 									</p>
-									<div class='counter-up '>
-										<div class='counter'>
+									<div className='counter-up '>
+										<div className='counter'>
 											<span
 												id='secondo'
-												class='countup count color-1'
+												className='countup count color-1'
 												cup-end='30'
 												cup-append='k'>
 												30k
@@ -130,14 +92,14 @@ export default function About() {
 											<h4>Happy Client</h4>
 											<p>
 												We Crafted an awesome design{' '}
-												<br class='d-none d-md-block d-lg-none d-xl-block' />{' '}
+												<br className='d-none d-md-block d-lg-none d-xl-block' />{' '}
 												library that is robust and
 											</p>
 										</div>
-										<div class='counter'>
+										<div className='counter'>
 											<span
 												id='secondo'
-												class='countup count color-2'
+												className='countup count color-2'
 												cup-end='42'
 												cup-append='k'>
 												42k
@@ -145,16 +107,16 @@ export default function About() {
 											<h4>Project Done</h4>
 											<p>
 												We Crafted an awesome design{' '}
-												<br class='d-none d-md-block d-lg-none d-xl-block' />{' '}
+												<br className='d-none d-md-block d-lg-none d-xl-block' />{' '}
 												library that is robust and
 											</p>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
+						</Col>
+					</Row>
+				</Container>
 			</div>
 		</section>
 	);
