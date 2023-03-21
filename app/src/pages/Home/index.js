@@ -12,5 +12,10 @@ export {
 	CompanyHistory,
 	CompanyProfile,
 	OurTeam,
-	ContactUs, LandingPage, News, Partners, Pricing, Solutions
+	ContactUs,
+	LandingPage,
+	News,
+	Partners,
+	Pricing,
+	Solutions
 }
