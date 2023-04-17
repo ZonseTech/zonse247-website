@@ -8,6 +8,12 @@ import {
 	VerifyEmail,
 } from '../pages/Auth';
 
+export const LOGIN_ROUTE = '/auth0/login';
+export const FORGET_PASSWORD_ROUTE = '/auth0/forget-password';
+export const RESET_PASSWORD_ROUTE = '/auth0/reset-password/:token';
+export const CONFIRM_PASSWORD_ROUTE = '/auth0/confirm-password';
+export const VERIFY_EMAIL_ROUTE = '/auth0/verify-email';
+
 // eslint-disable-next-line
 export default [
 	{
@@ -16,23 +22,24 @@ export default [
 		children: [
 			{
 				index: true,
-				path: '/auth0/login',
+				path: LOGIN_ROUTE,
 				element: <Login />,
 			},
 			{
-				path: '/auth0/forget-password',
+				name: 'forgetPassword',
+				path: FORGET_PASSWORD_ROUTE,
 				element: <ForgetPassword />,
 			},
 			{
-				path: '/auth0/reset-password/:token',
+				path: RESET_PASSWORD_ROUTE,
 				element: <ResetPassword />,
 			},
 			{
-				path: '/auth0/confirm-password',
+				path: CONFIRM_PASSWORD_ROUTE,
 				element: <ConfirmPassword />,
 			},
 			{
-				path: '/auth0/verify-email',
+				path: VERIFY_EMAIL_ROUTE,
 				element: <VerifyEmail />,
 			},
 		],
