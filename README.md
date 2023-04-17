@@ -2,4 +2,4 @@
 
 Income tracking app
 
-Built in ReactJs, Material UI, Bootstrap and Laravel
+Built in ReactJs, Ant Design UI, Bootstrap and Laravel
