@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Location, NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 
 import { LockOutlined, UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Spin, Alert } from 'antd';
@@ -14,36 +14,37 @@ interface ILoginValues {
 }
 
 const Login = (): JSX.Element => {
-	const auth = useAuth();
-	const navigate = useNavigate();
-	const location = useLocation();
-	const [message, setMessage] = useState('');
+	const auth: any = useAuth();
+	const navigate: NavigateFunction = useNavigate();
+	const location: Location = useLocation();
+	const [message, setMessage] = useState<string>('');
 	const [submitting, setSubmitting] = useState<boolean>(false);
-	const toDashboard = process.env.REACT_APP_REDIRECT_TO_DASHBOARD;
-	const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+	const toDashboard: string | undefined = process.env.REACT_APP_REDIRECT_TO_DASHBOARD;
+	const antIcon: JSX.Element = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 	const handleLogin = (values: ILoginValues) => {
 		setSubmitting(true);
 
 		setTimeout(async () => {
-			auth.signin(values.email, values.password, values.remember).then(
-				(result: { status: any; }) => {
-					if (result.status) {
-						const origin = location.state?.from?.pathname || toDashboard;
-						navigate(origin);
-					}
-				},
-				(error: { response: { data: { message: any; }; }; message: any; toString: () => any; }) => {
-					const resMessage =
-						(error.response &&
-							error.response.data &&
-							error.response.data.message) ||
-						error.message ||
-						error.toString();
+			auth.signin(values.email, values.password, values.remember)
+				.then(
+					(result: any) => {
+						if (result.status) {
+							const origin = location.state?.from?.pathname || toDashboard;
+							navigate(origin);
+						}
+					},
+					(error: { response: { data: { message: any; }; }; message: any; toString: () => any; }) => {
+						const resMessage =
+							(error.response &&
+								error.response.data &&
+								error.response.data.message) ||
+							error.message ||
+							error.toString();
 
-					setMessage(resMessage);
-				}
-			);
+						setMessage(resMessage);
+					}
+				);
 
 			setSubmitting(false);
 		}, 400);
