@@ -7,6 +7,7 @@ import {
 	ResetPassword,
 	VerifyEmail,
 } from '../pages/Auth';
+import E500 from '../errors/E500';
 
 export const LOGIN_ROUTE = '/auth0/login';
 export const FORGET_PASSWORD_ROUTE = '/auth0/forget-password';
@@ -19,6 +20,7 @@ export default [
 	{
 		path: '/auth0',
 		element: <Auth />,
+		errorElement: <E500 />,
 		children: [
 			{
 				index: true,
