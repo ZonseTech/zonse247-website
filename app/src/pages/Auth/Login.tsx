@@ -90,9 +90,15 @@ const Login = (): JSX.Element => {
 			</Form.Item>
 
 			<Form.Item>
-				<Button type="primary" htmlType="submit" className="login-form-button" disabled={submitting}>
-					{submitting ? <Spin indicator={antIcon} /> : "Log in"}
-				</Button>
+				<div className='flex justify-between'>
+					<Button type="primary" className="text-blue-600 bold disabled" htmlType="button">
+						{submitting ? <Spin indicator={antIcon} /> : "Create Account"}
+					</Button>
+
+					<Button type="primary" className="bg-blue-600" htmlType="submit" disabled={submitting}>
+						{submitting ? <Spin indicator={antIcon} /> : "Log in"}
+					</Button>
+				</div>
 			</Form.Item>
 		</Form>
 	);
