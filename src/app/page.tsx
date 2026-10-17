@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { Products } from "@/components/products";
 import { Services } from "@/components/services";
 import { SiteHeader } from "@/components/site-header";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <Products />
       </main>
     </>
   );
