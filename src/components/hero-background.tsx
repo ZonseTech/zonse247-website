@@ -31,7 +31,7 @@ export function HeroBackground() {
   }, []);
 
   return (
-    <div ref={ref} aria-hidden className="intro-bg absolute inset-0 -z-20">
+    <div ref={ref} aria-hidden className="intro-bg absolute inset-0 -z-20 mask-[linear-gradient(to_bottom,black_65%,transparent)]">
       <HeroScene animate={visible && !reduced} />
     </div>
   );
