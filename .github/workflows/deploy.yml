@@ -1,0 +1,115 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+    with:
+      artifact: true
+
+  deploy:
+    name: Release to production
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+
+    steps:
+      - name: 📥 Download release
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: web-${{ github.sha }}
+
+      - name: 📤 Upload release to server
+        uses: appleboy/scp-action@ff85246acaad7bdce478db94a363cd2bf7c90345 # v1.0.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          fingerprint: ${{ secrets.DEPLOY_HOST_FINGERPRINT }}
+          source: web.tar.gz
+          target: /var/www/web/incoming/${{ github.sha }}
+
+      - name: 🚀 Activate release
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        env:
+          SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          fingerprint: ${{ secrets.DEPLOY_HOST_FINGERPRINT }}
+          envs: SHA
+          command_timeout: 10m
+          script: |
+            set -eu
+
+            BASE=/var/www/web
+            RELEASE="$BASE/releases/$SHA"
+            PORT=3002
+            PREFLIGHT_PORT=3102
+            SHORT="$(echo "$SHA" | cut -c1-7)"
+
+            healthy() {
+              for attempt in $(seq 1 30); do
+                curl -fsS -o /dev/null "http://127.0.0.1:$1/" && return 0
+                sleep 2
+              done
+              return 1
+            }
+
+            mkdir -p "$RELEASE" "$BASE/shared/logs"
+            tar -xzf "$BASE/incoming/$SHA/web.tar.gz" -C "$RELEASE"
+            rm -rf "$BASE/incoming/$SHA"
+            if [ -f "$BASE/shared/.env.production" ]; then
+              ln -sfn "$BASE/shared/.env.production" "$RELEASE/.env.production"
+            fi
+
+            echo "🧪 Pre-flight check for $SHORT..."
+            (cd "$RELEASE" && NODE_ENV=production PORT=$PREFLIGHT_PORT HOSTNAME=127.0.0.1 node server.js > "$BASE/shared/logs/preflight.log" 2>&1) &
+            PREFLIGHT_PID=$!
+            if ! healthy "$PREFLIGHT_PORT"; then
+              kill "$PREFLIGHT_PID" 2>/dev/null || true
+              rm -rf "$RELEASE"
+              echo "❌ $SHORT failed pre-flight; production untouched"
+              tail -n 20 "$BASE/shared/logs/preflight.log" || true
+              exit 1
+            fi
+            kill "$PREFLIGHT_PID" 2>/dev/null || true
+
+            PREVIOUS="$(readlink -f "$BASE/current" || true)"
+            switch_to() {
+              ln -sfn "$1" "$BASE/current.next"
+              mv -Tf "$BASE/current.next" "$BASE/current"
+              pm2 startOrReload "$BASE/current/ecosystem.config.js" --env production --update-env
+            }
+
+            switch_to "$RELEASE"
+
+            if healthy "$PORT"; then
+              pm2 save
+              ls -1dt "$BASE"/releases/* | tail -n +6 | xargs -r rm -rf
+              echo "✅ Released $SHORT"
+              exit 0
+            fi
+
+            echo "❌ $SHORT unhealthy after switch"
+            if [ -n "$PREVIOUS" ] && [ -d "$PREVIOUS" ]; then
+              switch_to "$PREVIOUS"
+              healthy "$PORT" && echo "↩️ Rolled back to $(basename "$PREVIOUS" | cut -c1-7)"
+            fi
+            exit 1
