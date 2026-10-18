@@ -314,7 +314,7 @@ Go to **Settings → Secrets and variables → Actions → New repository secret
 To get the fingerprint, run this from your computer:
 
 ```bash
-ssh-keyscan -t ed25519 YOUR_SERVER_IP 2>/dev/null | ssh-keygen -lf -
+ssh-keyscan -t ecdsa YOUR_SERVER_IP 2>/dev/null | ssh-keygen -lf -
 ```
 
 Copy the part that starts with `SHA256:`.
