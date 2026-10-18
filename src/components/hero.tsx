@@ -1,23 +1,17 @@
-import { ArrowRight, ArrowUpRight, BrainCircuit, Code, Headset, Laptop, MessageCircle, type LucideIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { SERVICES } from "@/lib/site";
 import { HeroBackground } from "./hero-background";
-
-const ICONS: Record<(typeof SERVICES)[number]["key"], LucideIcon> = {
-  supply: Laptop,
-  software: Code,
-  "data-ai": BrainCircuit,
-  advisory: Headset,
-};
+import { SERVICE_ICONS } from "./service-icons";
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-slate-950 bg-[radial-gradient(ellipse_at_75%_60%,rgb(14_165_233/0.18),transparent_60%)] text-white">
+    <section className="relative isolate overflow-hidden bg-slate-950 bg-[radial-gradient(ellipse_at_75%_40%,rgb(14_165_233/0.18),transparent_55%)] text-white">
       <HeroBackground />
       <div className="absolute inset-0 -z-10 bg-linear-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-28 pb-14 sm:px-6 lg:min-h-144 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-32 lg:pb-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-28 pb-20 sm:px-6 lg:min-h-144 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-32 lg:pb-24">
         <div>
           <div className="intro-headline">
             <p className="flex items-center gap-3 text-xs font-bold tracking-[0.12em] text-sky-400 uppercase sm:tracking-[0.2em]">
@@ -70,7 +64,7 @@ export function Hero() {
 
         <ul className="grid grid-cols-2 gap-px border border-white/10 bg-white/10">
           {SERVICES.map(({ key, label, description, href }, i) => {
-            const Icon = ICONS[key];
+            const Icon = SERVICE_ICONS[key];
             return (
               <li key={key} style={{ "--i": i } as CSSProperties} className="intro-card">
                 <Link

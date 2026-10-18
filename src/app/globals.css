@@ -126,6 +126,7 @@
   }
   html {
     @apply font-sans;
+    scroll-padding-top: 4.5rem;
   }
 }
 @keyframes intro-drop {
@@ -190,5 +191,97 @@
   }
   .intro-chevron {
     animation: intro-chevron 0.75s cubic-bezier(0.38, 0, 0, 1) 3s backwards;
+  }
+}
+
+@keyframes float-y {
+  to {
+    translate: 0 -0.5rem;
+  }
+}
+
+@keyframes flow-down {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.receipt-edge {
+  mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 50% / 0.5rem 100%;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0.15;
+  }
+}
+
+@keyframes draw-x {
+  from {
+    scale: 0 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .flow-dot {
+    animation: flow-down 1.4s linear infinite;
+  }
+
+  .float-slow {
+    animation: float-y 3.2s ease-in-out infinite alternate;
+  }
+
+  .float-slower {
+    animation: float-y 4s ease-in-out 0.8s infinite alternate;
+  }
+
+  @supports (animation-timeline: view()) {
+    .statement {
+      view-timeline-name: --statement;
+    }
+
+    .statement-word {
+      animation: word-in linear both;
+      animation-timeline: --statement;
+      animation-range: cover calc(8% + var(--p) * 40%) cover calc(14% + var(--p) * 40%);
+    }
+
+    .reveal-stagger {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 12%) entry calc(60% + var(--i, 0) * 12%);
+    }
+
+    .draw-x {
+      transform-origin: left;
+      animation: draw-x linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 40%;
+    }
+
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
   }
 }
