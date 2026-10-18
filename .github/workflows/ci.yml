@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  pull_request:
+    paths-ignore:
+      - "**.md"
+  workflow_call:
+    inputs:
+      artifact:
+        description: Package the standalone build as an artifact for deployment
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Lint, type check and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: ♻️ Restore Next.js build cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**', 'next.config.ts') }}
+          restore-keys: nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+
+      - name: 🧩 Generate route types
+        run: npx next typegen
+
+      - name: 🔍 Type check
+        run: npx tsc --noEmit
+
+      - name: 🧹 Lint
+        run: npm run lint
+
+      - name: 🏗️ Build
+        run: npm run build
+
+      - name: 📦 Package standalone release
+        if: inputs.artifact
+        run: |
+          cp -r public .next/standalone/
+          cp -r .next/static .next/standalone/.next/
+          cp ecosystem.config.js .next/standalone/
+          tar -czf web.tar.gz -C .next/standalone .
+
+      - name: 📤 Upload release
+        if: inputs.artifact
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: web-${{ github.sha }}
+          path: web.tar.gz
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+  security:
+    name: Security audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: 🔐 Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
