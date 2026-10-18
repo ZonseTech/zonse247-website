@@ -61,7 +61,7 @@ jobs:
       - name: 📦 Package standalone release
         if: inputs.artifact
         run: |
-          cp -r public .next/standalone/
+          if [ -d public ]; then cp -r public .next/standalone/; fi
           cp -r .next/static .next/standalone/.next/
           cp ecosystem.config.js .next/standalone/
           tar -czf web.tar.gz -C .next/standalone .
