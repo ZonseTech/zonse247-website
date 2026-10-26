@@ -2,6 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NAV } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { useActiveHref } from "./use-scroll";
@@ -9,7 +10,7 @@ import { useActiveHref } from "./use-scroll";
 const HREFS = NAV.map((item) => item.href);
 
 export function DesktopNav() {
-  const active = useActiveHref(HREFS);
+  const active = useActiveHref(HREFS, usePathname());
 
   return (
     <nav aria-label="Main" className="hidden lg:block">
