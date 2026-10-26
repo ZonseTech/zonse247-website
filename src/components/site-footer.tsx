@@ -7,7 +7,10 @@ import { SocialLinks } from "./social-icons";
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   { title: "Services", links: SERVICES.map(({ label, href }) => ({ label, href })) },
-  { title: "Products", links: PRODUCTS.map(({ name, href }) => ({ label: name, href })) },
+  {
+    title: "Products",
+    links: [...PRODUCTS.map(({ name, href }) => ({ label: name, href })), { label: "Download Zonse247 POS", href: "/download" }],
+  },
   {
     title: "Company",
     links: [

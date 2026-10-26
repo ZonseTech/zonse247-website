@@ -5,6 +5,7 @@ import {
   Check,
   FileChartColumn,
   Landmark,
+  MonitorDown,
   Plug,
   ReceiptText,
   RefreshCw,
@@ -111,13 +112,24 @@ export function Products() {
                       })}
                     </ul>
 
-                    <Link
-                      href={product.cta.href}
-                      className="group/cta mt-10 inline-flex h-12 items-center gap-3 border border-sky-400/40 px-6 text-sm font-semibold text-sky-300 transition-colors hover:border-sky-400 hover:bg-sky-400 hover:text-slate-950"
-                    >
-                      {product.cta.label}
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" aria-hidden />
-                    </Link>
+                    <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+                      <Link
+                        href={product.cta.href}
+                        className="group/cta inline-flex h-12 items-center gap-3 border border-sky-400/40 px-6 text-sm font-semibold text-sky-300 transition-colors hover:border-sky-400 hover:bg-sky-400 hover:text-slate-950"
+                      >
+                        {product.cta.label}
+                        <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" aria-hidden />
+                      </Link>
+                      {product.download && (
+                        <Link
+                          href={product.download.href}
+                          className="group/download inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors hover:text-white"
+                        >
+                          <MonitorDown className="size-5 stroke-[1.75] text-sky-400" aria-hidden />
+                          {product.download.label}
+                        </Link>
+                      )}
+                    </div>
                   </div>
 
                   <div className={cn("relative", flipped && "lg:order-1")}>
